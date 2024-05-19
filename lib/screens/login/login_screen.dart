@@ -102,6 +102,20 @@ class _LoginPageState extends State<LoginPage> {
           ),
           centerTitle: false, // Đảm bảo tiêu đề không bị căn giữa
           backgroundColor: Color.fromARGB(255, 136, 238, 226), // Màu nền
+          actions: [
+            Padding(
+              padding: const EdgeInsets.only(right: 10.0),
+              child: ClipOval(
+                child: Image.asset(
+                  'lib/res/images/logo.png', // Đường dẫn đến tệp ảnh logo
+                  height: 40, // Chiều cao của logo
+                  width: 40, // Chiều rộng của logo
+                  fit: BoxFit
+                      .cover, // Đảm bảo logo không bị cắt xén và bao phủ toàn bộ vùng
+                ),
+              ),
+            ),
+          ],
         ),
         body: GestureDetector(
           onTap: () {

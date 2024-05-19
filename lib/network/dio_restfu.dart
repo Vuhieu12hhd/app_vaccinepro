@@ -53,8 +53,8 @@ class DioRestFull {
   String history = '/Profile/xemlichsu';
   String vaccinationSchedule = '/vaccinationSchedules';
   String getVaccineQrCode(int id) =>
-      'http://192.168.0.105:3001/schedule-detail/$id';
+      'http://192.168.0.102:3001/schedule-detail/$id';
   String vaccines = '/vaccines';
 }
 
-const BASE_URL = 'http://192.168.0.105:3000/api/v1';
+const BASE_URL = 'http://192.168.0.102:3000/api/v1';

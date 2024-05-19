@@ -80,7 +80,7 @@ class _SignInPageState extends State<SignInPage> {
         'address': _addressController.text,
         'phone_number': _phoneController.text,
         'email': _emailController.text,
-        'dob': selectedDatePost,
+        //'dob': selectedDatePost,
         'gender': _selectedGennder,
         // 'Cccd': _idPesonController.text,
         'password': _passwordController.text,
@@ -146,6 +146,20 @@ class _SignInPageState extends State<SignInPage> {
           ),
           centerTitle: false, // Đảm bảo tiêu đề không bị căn giữa
           backgroundColor: Color.fromARGB(255, 136, 238, 226), // Màu nền
+          actions: [
+            Padding(
+              padding: const EdgeInsets.only(right: 10.0),
+              child: ClipOval(
+                child: Image.asset(
+                  'lib/res/images/logo.png', // Đường dẫn đến tệp ảnh logo
+                  height: 40, // Chiều cao của logo
+                  width: 40, // Chiều rộng của logo
+                  fit: BoxFit
+                      .cover, // Đảm bảo logo không bị cắt xén và bao phủ toàn bộ vùng
+                ),
+              ),
+            ),
+          ],
         ),
         body: GestureDetector(
           onTap: () {
@@ -176,6 +190,9 @@ class _SignInPageState extends State<SignInPage> {
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
+                        const SizedBox(
+                          height: 16,
+                        ),
                         const Text('Register',
                             style: TextStyle(
                                 fontSize: 26,
@@ -263,46 +280,8 @@ class _SignInPageState extends State<SignInPage> {
                           },
                           onChanged: (content) {},
                         ),
-                        Row(
-                          children: [
-                            const Icon(
-                              Icons.table_view_rounded,
-                              color: Colors.grey,
-                            ),
-                            const SizedBox(
-                              width: 14,
-                            ),
-                            const Text(
-                              'Ngày sinh*',
-                              style:
-                                  TextStyle(color: Colors.black, fontSize: 16),
-                            ),
-                            const SizedBox(
-                              width: 10,
-                            ),
-                            Text(
-                              selectedDate != null
-                                  ? _formatDate(selectedDate!)
-                                  : '01/01/2000',
-                              style: selectedDate != null
-                                  ? const TextStyle(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.normal,
-                                      color: Colors.black,
-                                    )
-                                  : const TextStyle(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.normal,
-                                      color: Colors.black,
-                                    ),
-                            ),
-                            IconButton(
-                                onPressed: () => _selectDate(context),
-                                icon: const Icon(
-                                  Icons.arrow_drop_down_outlined,
-                                  color: Colors.grey,
-                                )),
-                          ],
+                        const SizedBox(
+                          height: 15,
                         ),
                         Row(
                           children: [
@@ -337,26 +316,8 @@ class _SignInPageState extends State<SignInPage> {
                             ),
                           ],
                         ),
-                        TextFormField(
-                          controller: _idPesonController,
-                          keyboardType: TextInputType.phone,
-                          decoration: const InputDecoration(
-                              label: Text(
-                                ' Số chứng minh *',
-                                style: TextStyle(
-                                  color: Colors.black,
-                                ),
-                              ),
-                              icon: Icon(Icons.person)),
-                          validator: (String? value) {
-                            return value!.isEmpty
-                                ? 'Bạn chưa nhập số chứng minh'
-                                : null;
-                          },
-                          onChanged: (content) {},
-                        ),
                         const SizedBox(
-                          height: 16,
+                          height: 10,
                         ),
                         TextFormField(
                           controller: _passwordController,
@@ -399,8 +360,7 @@ class _SignInPageState extends State<SignInPage> {
                                   _passwordController.text.isNotEmpty &&
                                   _addressController.text.isNotEmpty &&
                                   _phoneController.text.isNotEmpty &&
-                                  _emailController.text.isNotEmpty &&
-                                  _idPesonController.text.isNotEmpty) {
+                                  _emailController.text.isNotEmpty) {
                                 _ShowDialog();
 
                                 final result = await onPressSignUp();
@@ -432,7 +392,7 @@ class _SignInPageState extends State<SignInPage> {
                             ),
                             child: const Text('Đăng ký',
                                 style: TextStyle(
-                                    fontSize: 18,
+                                    fontSize: 19,
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold)),
                           ),
@@ -454,7 +414,7 @@ class _SignInPageState extends State<SignInPage> {
                             ),
                             child: const Text('Đăng nhập',
                                 style: TextStyle(
-                                    fontSize: 18,
+                                    fontSize: 19,
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold)),
                           ),
